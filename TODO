@@ -1,0 +1,77 @@
+Whitespace:
+  Spaces FTW
+  Tabs, please
+  Both, mix as necessary
+  Tabs for indentation, spaces for alignment
+  I don't give a damn
+
+Extending prototype of built-in objects:
+  That is inherently evil
+  Kicks ass, but not on Object
+  Kicks ass, including Object
+
+Object iteration:
+  for..in
+  for..in + hasOwnProperty
+functional ($.each or similar)
+
+Array iteration:
+  for..in
+  for..in + hasOwnProperty
+  indexed (for i=0, while)
+  functional (forEach or similar)
+
+Semicolons:
+  Never
+  All the time
+  Sometimes
+
+Methods defined:
+  In prototype: Stuff.prototype.work = ...
+  In instance: this.work = ...
+  Using an abstraction: defineMethod({work: ...}) or similar
+
+Inheritance:
+  Native: Child.prototype = Object.create(Parent.prototype)
+  Using an abstraction: extend(Child, Parent) or similar
+
+Preprocessing:
+  Pure JS
+  CoffeeScript
+  LiveScript
+  Dart
+  My own
+
+Closures:
+  Never
+  All the time
+  Only when necessary
+
+Comparison:
+  Always ==
+  Always ===
+  Mixed, as necessary
+
+Multi-line lists (arrays, objects, arguments):
+  Comma at the end
+  Comma at the beginning
+
+Array length caching:
+  Always
+  Never
+  For long/hot loops
+
+Private names:
+  Not used at all
+  Underscore(s) at the beginning
+  Underscore(s) at the end
+  Other
+
+Variable declaration:
+  At the beginning of a function
+  As necessary
+
+Where:
+  Client
+  Server
+  Both
