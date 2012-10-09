@@ -1,77 +1,282 @@
-Whitespace:
-  Spaces FTW
-  Tabs, please
-  Both, mix as necessary
-  Tabs for indentation, spaces for alignment
-  I don't give a damn
+],
+{
+name: "Whitespace:",
+options: [
 
-Extending prototype of built-in objects:
-  That is inherently evil
-  Kicks ass, but not on Object
-  Kicks ass, including Object
+	{
+		name: "Spaces FTW"
+	},
 
-Object iteration:
-  for..in
-  for..in + hasOwnProperty
-functional ($.each or similar)
+	{
+		name: "Tabs, please"
+	},
 
-Array iteration:
-  for..in
-  for..in + hasOwnProperty
-  indexed (for i=0, while)
-  functional (forEach or similar)
+	{
+		name: "Both, mix as necessary"
+	},
 
-Semicolons:
-  Never
-  All the time
-  Sometimes
+	{
+		name: "Tabs for indentation, spaces for alignment"
+	},
 
-Methods defined:
-  In prototype: Stuff.prototype.work = ...
-  In instance: this.work = ...
-  Using an abstraction: defineMethod({work: ...}) or similar
+	{
+		name: "I don't give a damn"
+	},
 
-Inheritance:
-  Native: Child.prototype = Object.create(Parent.prototype)
-  Using an abstraction: extend(Child, Parent) or similar
 
-Preprocessing:
-  Pure JS
-  CoffeeScript
-  LiveScript
-  Dart
-  My own
+],
+{
+name: "Extending prototype of built-in objects:",
+options: [
 
-Closures:
-  Never
-  All the time
-  Only when necessary
+	{
+		name: "That is inherently evil"
+	},
 
-Comparison:
-  Always ==
-  Always ===
-  Mixed, as necessary
+	{
+		name: "Kicks ass, but not on Object"
+	},
 
-Multi-line lists (arrays, objects, arguments):
-  Comma at the end
-  Comma at the beginning
+	{
+		name: "Kicks ass, including Object"
+	},
 
-Array length caching:
-  Always
-  Never
-  For long/hot loops
 
-Private names:
-  Not used at all
-  Underscore(s) at the beginning
-  Underscore(s) at the end
-  Other
+],
+{
+name: "Object iteration:",
+options: [
 
-Variable declaration:
-  At the beginning of a function
-  As necessary
+	{
+		name: "for..in"
+	},
 
-Where:
-  Client
-  Server
-  Both
+	{
+		name: "for..in + hasOwnProperty"
+	},
+
+],
+{
+name: "functional ($.each or similar)",
+options: [
+
+
+],
+{
+name: "Array iteration:",
+options: [
+
+	{
+		name: "for..in"
+	},
+
+	{
+		name: "for..in + hasOwnProperty"
+	},
+
+	{
+		name: "indexed (for i=0, while)"
+	},
+
+	{
+		name: "functional (forEach or similar)"
+	},
+
+
+],
+{
+name: "Semicolons:",
+options: [
+
+	{
+		name: "Never"
+	},
+
+	{
+		name: "All the time"
+	},
+
+	{
+		name: "Sometimes"
+	},
+
+
+],
+{
+name: "Methods defined:",
+options: [
+
+	{
+		name: "In prototype: Stuff.prototype.work = ..."
+	},
+
+	{
+		name: "In instance: this.work = ..."
+	},
+
+	{
+		name: "Using an abstraction: defineMethod({work: ...}) or similar"
+	},
+
+
+],
+{
+name: "Inheritance:",
+options: [
+
+	{
+		name: "Native: Child.prototype = Object.create(Parent.prototype)"
+	},
+
+	{
+		name: "Using an abstraction: extend(Child, Parent) or similar"
+	},
+
+
+],
+{
+name: "Preprocessing:",
+options: [
+
+	{
+		name: "Pure JS"
+	},
+
+	{
+		name: "CoffeeScript"
+	},
+
+	{
+		name: "LiveScript"
+	},
+
+	{
+		name: "Dart"
+	},
+
+	{
+		name: "My own"
+	},
+
+
+],
+{
+name: "Closures:",
+options: [
+
+	{
+		name: "Never"
+	},
+
+	{
+		name: "All the time"
+	},
+
+	{
+		name: "Only when necessary"
+	},
+
+
+],
+{
+name: "Comparison:",
+options: [
+
+	{
+		name: "Always =="
+	},
+
+	{
+		name: "Always ==="
+	},
+
+	{
+		name: "Mixed, as necessary"
+	},
+
+
+],
+{
+name: "Multi-line lists (arrays, objects, arguments):",
+options: [
+
+	{
+		name: "Comma at the end"
+	},
+
+	{
+		name: "Comma at the beginning"
+	},
+
+
+],
+{
+name: "Array length caching:",
+options: [
+
+	{
+		name: "Always"
+	},
+
+	{
+		name: "Never"
+	},
+
+	{
+		name: "For long/hot loops"
+	},
+
+
+],
+{
+name: "Private names:",
+options: [
+
+	{
+		name: "Not used at all"
+	},
+
+	{
+		name: "Underscore(s) at the beginning"
+	},
+
+	{
+		name: "Underscore(s) at the end"
+	},
+
+	{
+		name: "Other"
+	},
+
+
+],
+{
+name: "Variable declaration:",
+options: [
+
+	{
+		name: "At the beginning of a function"
+	},
+
+	{
+		name: "As necessary"
+	},
+
+
+],
+{
+name: "Where:",
+options: [
+
+	{
+		name: "Client"
+	},
+
+	{
+		name: "Server"
+	},
+
+	{
+		name: "Both"
+	},
+
