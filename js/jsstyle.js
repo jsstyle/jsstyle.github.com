@@ -47,6 +47,7 @@ JSStyle.prototype.isDone = function() {
 JSStyle.prototype.toCanvas = function(size) {
 	var size = 200;
 	var canvas = document.createElement("canvas");
+	canvas.className = "jslogo";
 	canvas.width = size;
 	canvas.height = size;
 	
@@ -56,8 +57,8 @@ JSStyle.prototype.toCanvas = function(size) {
 	
 	ctx.textBaseline = "bottom";
 	ctx.textAlign = "right";
-	ctx.font = "bold 80px sans-serif";
-	ctx.fillStyle = "#666";
+	ctx.font = "bold 80px arial, sans-serif";
+	ctx.fillStyle = "#323330";
 	ctx.fillText("JS", size-10, size);
 	
 	var count = 0;

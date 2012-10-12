@@ -21,6 +21,8 @@ JSStyle.Item.prototype.getName = function() {
 
 JSStyle.Item.prototype.build = function(parent) {
 	var name = "item_" + Math.random().toString().replace(/[^0-9]/g, "");
+
+	var div = document.createElement("div");
 	var heading = document.createElement("h2");
 	heading.innerHTML = this._data.name;
 	
@@ -32,7 +34,9 @@ JSStyle.Item.prototype.build = function(parent) {
 		option.build(ul, name);
 	}
 	
-	[heading, ul].forEach(parent.appendChild, parent);
+	//[heading, ul].forEach(parent.appendChild, parent);
+	[heading, ul].forEach(div.appendChild, div);
+	parent.appendChild(div);
 	return this;
 }
 

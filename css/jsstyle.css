@@ -1,9 +1,15 @@
 body {
-	background-color: #666;
+	background-color: #555;
 	color: #fff;
 	text-shadow: 0 0.1em 0.1em #000;
 	font-size: 130%;
 	font-family: sans-serif;
+}
+
+div {
+	float: left;
+	width: 25em;
+	height: 15em;
 }
 
 h2 {
@@ -29,10 +35,14 @@ li label {
 
 li span {
 	margin-left: 0.2em;
-	opacity: 0.8;
+	opacity: 0.5;
 }
 
 li input:checked ~ span {
 	opacity: 1;
 }
 
+.jslogo {
+	background-color: #f0db4f;
+	color: #323330;
+}
