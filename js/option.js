@@ -5,8 +5,13 @@ JSStyle.Option = function(data) {
 	}
 }
 
-JSStyle.Option.prototype.getValue = function() {
+JSStyle.Option.prototype.getName = function() {
 	return this._data.name;
+}
+
+JSStyle.Option.prototype.getId = function() {
+	/* FIXME overit unikatnost */
+	return this._data.id;
 }
 
 JSStyle.Option.prototype.build = function(parent, name) {

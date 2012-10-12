@@ -6,14 +6,16 @@ body {
 	font-family: sans-serif;
 }
 
-div {
+div.item {
 	float: left;
 	width: 25em;
 	height: 15em;
+	counter-increment: item;
 }
 
 h2 {
-	counter-increment: item;
+	font-size: 120%;
+	margin: 0.5em 0;
 }
 
 h2:before {
@@ -22,6 +24,7 @@ h2:before {
 
 ul {
 	padding-left: 20px;
+	margin: 0.5em 0;
 }
 
 li {
@@ -45,4 +48,8 @@ li input:checked ~ span {
 .jslogo {
 	background-color: #f0db4f;
 	color: #323330;
+}
+
+#result > * {
+	float: left;
 }
