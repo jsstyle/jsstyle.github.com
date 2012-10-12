@@ -132,23 +132,9 @@ JSStyle.prototype.toAA = function() {
 		}
 		str += "\n";
 	}
-
 	node.innerHTML = str;
 	
 	return node;
-}
-
-JSStyle.prototype._drawItemToCanvas = function(item, ctx, index) {
-	var size = 20;
-	var line = this._indexToDiagonal(index);
-	
-	var before = line * (line+1) / 2;
-	index -= before;
-	var x = index;
-	var y = line - index;
-	
-	ctx.fillStyle = "red";
-	ctx.fillRect(x*size, y*size, size, size);
 }
 
 JSStyle.prototype._indexToCoords = function(index) {
