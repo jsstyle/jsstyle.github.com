@@ -101,7 +101,8 @@ JSStyle.prototype.toCanvas = function() {
 
 JSStyle.prototype.toAA = function() {
 	var width = 20;
-	var height = Math.round(width / 1.7);
+	var height = 12;
+
 	var node = document.createElement("pre");
 	node.className = "jslogo";
 
@@ -112,9 +113,15 @@ JSStyle.prototype.toAA = function() {
 			var ch = " ";
 			if (i == 0 || i+1 == width) { ch = "|";}
 			if (j == 0 || j+1 == height) { ch = (ch == " " ? "-" : "+"); }
-
 			data[i].push(ch);
 		}
+	}
+	
+	var JS = "12,6 15,6 16,6 12,7 14,7 12,8 15,8 16,8 9,9 12,9 17,9 10,10 11,10 15,10 16,10";
+	var chars = JS.split(" ");
+	while (chars.length) {
+		var parts = chars.shift().split(",");
+		data[parts[0]][parts[1]] = "#";
 	}
 
 	var count = 0;

@@ -53,3 +53,12 @@ li input:checked ~ span {
 #result > * {
 	float: left;
 }
+
+#result pre {
+	margin: 0;
+}
+
+#result .jslogo {
+	line-height: 100%;
+	text-shadow: none;
+}
