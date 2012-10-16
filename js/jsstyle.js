@@ -40,8 +40,7 @@ JSStyle.prototype.toHash = function() {
 	var ids = this._sortIds();
 	var result = [];
 	while (ids.length) {
-		var id = ids.shift();
-		var value = this._items[id].getValue();
+		var value = this._items[ids.shift()].getValue();
 		var code = "x";
 		
 		if (value !== null) {
@@ -60,28 +59,6 @@ JSStyle.prototype.toHash = function() {
 	return result.join("");
 }
 
-JSStyle.prototype.fromHash = function(str) {
-	var ids = this._sortIds();
-	
-	while (str.length && ids.length) {
-		var id = ids.shift();
-		var item = this._items[id];
-		var ch = str.charAt(0);
-		var code = 0;
-		
-		if (ch == "x") { /* empty*/
-			str = str.substring(1);
-			item.setValue(null);
-		} else { /* number */
-			ch += str.charAt(1);
-			str = str.substring(2);
-			code = parseInt(ch, 10) + 32;
-			item.setValue(String.fromCharCode(code));
-		}
-	}
-
-	return this;
-}
 
 JSStyle.prototype.isDone = function() {
 	for (var id in this._items) {
@@ -168,6 +145,69 @@ JSStyle.prototype.toAA = function() {
 	node.innerHTML = str;
 	
 	return node;
+}
+
+JSStyle.prototype.fromJSON = function(data) {
+	for (var id in data) {
+		var item = this._items[id];
+		if (!item) { continue; }
+		item.setValue(data[id]);
+	}
+
+	return this;
+}
+
+JSStyle.prototype.fromHash = function(str) {
+	var ids = this._sortIds();
+	
+	while (str.length && ids.length) {
+		var item = this._items[ids.shift()];
+		var ch = str.charAt(0);
+		var code = 0;
+		
+		if (ch == "x") { /* empty*/
+			str = str.substring(1);
+			item.setValue(null);
+		} else { /* number */
+			ch += str.charAt(1);
+			str = str.substring(2);
+			code = parseInt(ch, 10) + 32;
+			item.setValue(String.fromCharCode(code));
+		}
+	}
+	
+	/* fill remaining with nulls */
+	while (ids.length) { this._items[ids.shift()].setValue(null); }
+
+	return this;
+}
+
+JSStyle.prototype.fromAA = function(str) {
+	var ids = this._sortIds();
+
+	var parts = str.split("\n");
+	parts.shift();
+	parts = parts.map(function($) { return $.substring(1); });
+	
+	var x = 0;
+	var y = 0;
+
+	while (ids.length) {
+		var item = this._items[ids.shift()];
+		var row = parts[y] || "";
+		var value = row.charAt(x);
+		if (value.length == 0) { value = null; }
+		item.setValue(value);
+		
+		y--;
+		if (y < 0) {
+			y = x+1;
+			x = 0;
+		} else {
+			x++;
+		}
+	}
+	
 }
 
 JSStyle.prototype._indexToCoords = function(index) {
