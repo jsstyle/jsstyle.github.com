@@ -31,7 +31,7 @@ var Page = {
 		
 		this._load();
 		this._pickQuote();
-		setInterval(this._pickQuote, 4000);
+		setInterval(this._pickQuote, 5000);
 	},
 
 	handleEvent: function(e) {

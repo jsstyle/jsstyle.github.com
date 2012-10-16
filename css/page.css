@@ -2,7 +2,7 @@ body {
 	background-color: #555;
 	color: #eee;
 	text-shadow: 0 0.08em 0.1em #000;
-	font-family: sans-serif;
+	font-family: ubuntu, sans-serif;
 	margin: 0;
 }
 
@@ -46,7 +46,7 @@ section[id]:not(:target) {
 footer {
 	clear: both;
 	text-align: center;
-	font-size: 80%;
+	font-size: 90%;
 	padding-top: 2em;
 }
 
