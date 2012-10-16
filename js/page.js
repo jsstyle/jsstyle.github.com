@@ -2,7 +2,11 @@ var Page = {
 	_dom: {},
 
 	init: function() {
-		this._jsstyle = new JSStyle(DATA);
+		if (!document.createElement("canvas").getContext) {
+			alert("Sorry, your browser is not sexy enough for this cool stuff :-(");
+			return;
+		}
+		
 		this._dom.about = document.querySelector("#about");
 		this._dom.create = document.querySelector("#create");
 		this._dom.decode = document.querySelector("#decode");
@@ -15,7 +19,14 @@ var Page = {
 		this._dom.createButton.addEventListener("click", this);
 		this._dom.decodeButton.addEventListener("click", this);
 
-		this._jsstyle.build(this._dom.create);
+		try {
+			this._jsstyle = new JSStyle(DATA);
+			this._jsstyle.build(this._dom.create);
+		} catch (e) {
+			alert(e.message);
+			return;
+		}
+		
 		this._dom.create.appendChild(this._dom.createButton);
 		
 		this._load();
@@ -59,14 +70,6 @@ var Page = {
 			return;
 		}
 		
-		/* is it a JSON? */
-		try {
-			var data = JSON.parse(value);
-			this._jsstyle.fromJSON(data);
-			this._create();
-			return;
-		} catch (e) {};
-
 		/* is it an url? */
 		var r = value.match(/^(http.*\?)?([x0-9]+)(#.*)?$/);
 		if (r) {
@@ -83,6 +86,15 @@ var Page = {
 			return;
 		}
 		
+		/* is it a JSON? */
+		try {
+			var data = JSON.parse(value);
+			this._jsstyle.fromJSON(data);
+			this._create();
+			return;
+		} catch (e) {};
+
+
 		alert("Unable to decode pasted data :-(");
 	},
 	
