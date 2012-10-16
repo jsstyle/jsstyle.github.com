@@ -30,6 +30,8 @@ var Page = {
 		this._dom.create.appendChild(this._dom.createButton);
 		
 		this._load();
+		this._pickQuote();
+		setInterval(this._pickQuote, 4000);
 	},
 
 	handleEvent: function(e) {
@@ -133,6 +135,24 @@ var Page = {
 		
 		[heading, node].forEach(box.appendChild, box);
 		this._dom.result.appendChild(box);
+	},
+	
+	_pickQuote: function() {
+		var current = null;
+		var avail = [];
+		var quotes = document.querySelectorAll("#about div");
+		for (var i=0;i<quotes.length;i++) {
+			var quote = quotes[i];
+			if (quote.className) {
+				current = quote;
+			} else {
+				avail.push(quote);
+			}
+		}
+		
+		if (current) { current.className = ""; }
+		var index = ~~(Math.random()*avail.length);
+		avail[index].className = "active";
 	}
 	
 };
