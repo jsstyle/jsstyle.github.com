@@ -205,11 +205,11 @@ var DATA = [
 		options: [
 			{
 				id: "1",
-				name: "Comma at the end"
+				name: "Comma at the beginning"
 			},
 			{
 				id: "n",
-				name: "Comma at the beginning"
+				name: "Comma at the end"
 			}
 		]
 	},

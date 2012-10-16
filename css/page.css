@@ -1,0 +1,64 @@
+body {
+	background-color: #555;
+	color: #eee;
+	text-shadow: 0 0.08em 0.1em #000;
+	font-family: sans-serif;
+	margin: 0;
+}
+
+a {
+	color: #eee;
+}
+
+header {
+	background-color: #333;
+	box-shadow: 0 2px 2px #000;
+}
+
+header h1 {
+	margin-top: 0;
+	padding-top: 0.5em;
+	text-align: center;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	font-size: 80%;
+	padding-top: 2em;
+}
+
+body > section {
+	margin: 1em;
+}
+
+section[id]:not(:target) {
+	display: none;
+}
+
+.jslogo {
+	background-color: #f0db4f;
+	color: #323330;
+}
+
+#result {
+	float: left;
+}
+
+#result pre {
+	font-size: 130%;
+}
+
+#result textarea {
+	resize: none;
+	border: none;
+	overflow: hidden;
+	font-size: 130%;
+	padding: 0.3em;
+	margin: 0;
+}
+
+#result .jslogo {
+	line-height: 100%;
+	text-shadow: none;
+}
