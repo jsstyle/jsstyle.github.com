@@ -53,8 +53,6 @@ var Page = {
 	      ne      | about |    -   |  -   |
 	*/
 	_load: function() {
-		var create = false;
-		
 		if (location.search.length > 1) { /* pre-fill with data from url */
 			var hash = location.search.substring(1);
 			this._jsstyle.fromHash(hash);
@@ -73,7 +71,7 @@ var Page = {
 		}
 		
 		/* is it an url? */
-		var r = value.match(/^(http.*\?)?([x0-9]+)(#.*)?$/);
+		var r = value.match(/^(http.*\?)?([\-0-9]+)(#.*)?$/);
 		if (r) {
 			this._jsstyle.fromHash(r[2]);
 			this._create();
