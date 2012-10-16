@@ -1,0 +1,33 @@
+#result div {
+	width: 20%;
+	margin: 1%;
+	padding: 1%;
+	background-color: #4a4a4a;
+	border-radius: 2em;
+	float: left;
+	text-align: center;
+	border: 2px dashed #000;
+}
+
+#result h3 {
+	margin-top: 0;
+}
+
+#result .jslogo {
+	background-color: #f0db4f;
+	color: #323330;
+	text-shadow: none;
+}
+
+#result pre {
+	text-align: left;
+}
+
+#result textarea {
+	resize: none;
+	border: none;
+	overflow: hidden;
+	font-size: 130%;
+	padding: 0.3em;
+	margin: 0;
+}

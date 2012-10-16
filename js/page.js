@@ -20,7 +20,7 @@ var Page = {
 			var hash = location.search.substring(1);
 			this._jsstyle.fromHash(hash);
 			this._create();
-		} else {
+		} else if (!location.hash) {
 			location.hash = "about";
 		}
 	},
@@ -37,17 +37,38 @@ var Page = {
 	_create: function() {
 		this._dom.result.innerHTML = "";
 		this._dom.result.appendChild(this._dom.resultHeading);
-
-		this._dom.result.appendChild(this._jsstyle.toCanvas());
 		
+		var canvas = this._jsstyle.toCanvas();
+		this._buildResultItem("Image", "Right-click to save", canvas);
+
+		var aa = this._jsstyle.toAA();
+		this._buildResultItem("Signature", "Hardcore ASCII art awesomeness. Select all, copy, paste!", aa);
+
 		var url = "?" + this._jsstyle.toHash();
 		var link = document.createElement("a");
 		link.href = url;
-		link.innerHTML = "Permalink";
-		this._dom.result.appendChild(link);
+		link.target = "_blank";
+		link.innerHTML = "Click here";
+		var aa = this._jsstyle.toAA();
+		this._buildResultItem("Permalink", "Link to this page", link);
 
-		this._dom.result.appendChild(this._jsstyle.toAA());
+		var json = this._jsstyle.toJSON();
+		var pre = document.createElement("pre");
+		pre.innerHTML = JSON.stringify(json, null, "  ");
+		this._buildResultItem("JSON", "Pure JSONified essence", pre);
+
 		location.hash = "result";
+	},
+	
+	_buildResultItem: function(label, title, node) {
+		var box = document.createElement("div");
+		box.title = title;
+		
+		var heading = document.createElement("h3");
+		heading.innerHTML = label;
+		
+		[heading, node].forEach(box.appendChild, box);
+		this._dom.result.appendChild(box);
 	}
 	
 };

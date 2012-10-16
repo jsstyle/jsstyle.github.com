@@ -254,7 +254,7 @@ var DATA = [
 		]
 	},
 	{
-		id: "var",
+		id: "v",
 		name: "Variable declaration",
 		options: [
 			{
