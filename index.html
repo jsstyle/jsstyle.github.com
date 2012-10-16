@@ -6,12 +6,44 @@
 		<script src="js/jsstyle.js"></script>
 		<script src="js/item.js"></script>
 		<script src="js/option.js"></script>
-		<title>JavaScript Style</title>
-		<link href='http://fonts.googleapis.com/css?family=Inconsolata|Ubuntu+Mono|PT+Mono|Droid+Sans+Mono|Nova+Mono' rel='stylesheet' type='text/css'>
+		<script src="js/page.js"></script>
+		<title>JavaScript Style Badge</title>
 
 		<link href="css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/nav.css" rel="stylesheet" type="text/css" />
+		<link href="css/page.css" rel="stylesheet" type="text/css" />
 	</head>
-	<body onload="new JSStyle(DATA).build(document.body)">
-		<div id="result"></div>
+	<body onload="Page.init()">
+		<header>
+			<h1>JavaScript Style Badge :: Your JS Signature</h1>
+			<nav>
+				<ul>
+					<li><a href="#create">Create</a></li>
+					<li><a href="#decode">Decode</a></li>
+					<li><a href="#about">About</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section id="about">
+			<p>wtf omg lol</p>
+		</section>
+		
+		<section id="create">
+			<h2>Create your own JavaScript Style Badge</h2>
+			<button>Create the badge!</button>
+		</section>
+		
+		<section id="decode">
+			Paste the URL or the generated signature into the area below:
+		</section>
+
+		<section id="result">
+			<h2>Behold! The mighty JavaScript Style Badge!</h2>
+		</section>
+		
+		<footer>
+			&copy; 2012 <a href="http://ondras.zarovi.cz/">Ondřej Žára</a>
+		</footer>
 	</body>
 </html>
