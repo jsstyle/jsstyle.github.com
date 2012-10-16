@@ -35,30 +35,3 @@ body > section {
 section[id]:not(:target) {
 	display: none;
 }
-
-.jslogo {
-	background-color: #f0db4f;
-	color: #323330;
-}
-
-#result {
-	float: left;
-}
-
-#result pre {
-	font-size: 130%;
-}
-
-#result textarea {
-	resize: none;
-	border: none;
-	overflow: hidden;
-	font-size: 130%;
-	padding: 0.3em;
-	margin: 0;
-}
-
-#result .jslogo {
-	line-height: 100%;
-	text-shadow: none;
-}

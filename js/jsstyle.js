@@ -27,6 +27,15 @@ JSStyle.prototype.toDebug = function() {
 	return result;
 }
 
+JSStyle.prototype.toJSON = function() {
+	var result = {};
+	for (var id in this._items) {
+		var item = this._items[id];
+		result[item.getId()] = item.getValue();
+	}
+	return result;
+}
+
 JSStyle.prototype.toHash = function() {
 	var ids = this._sortIds();
 	var result = [];
@@ -114,7 +123,7 @@ JSStyle.prototype.toCanvas = function() {
 
 JSStyle.prototype.toAA = function() {
 	var width = 20;
-	var height = 12;
+	var height = 11;
 
 	var node = document.createElement("textarea");
 	node.cols = width;
@@ -133,7 +142,7 @@ JSStyle.prototype.toAA = function() {
 		}
 	}
 	
-	var JS = "12,6 15,6 16,6 12,7 14,7 12,8 15,8 16,8 9,9 12,9 17,9 10,10 11,10 15,10 16,10";
+	var JS = "12,5 15,5 16,5 12,6 14,6 12,7 15,7 16,7 9,8 12,8 17,8 10,9 11,9 15,9 16,9";
 	var chars = JS.split(" ");
 	while (chars.length) {
 		var parts = chars.shift().split(",");
