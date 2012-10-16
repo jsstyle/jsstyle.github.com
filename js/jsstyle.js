@@ -79,7 +79,7 @@ JSStyle.prototype.toCanvas = function() {
 	
 	ctx.textBaseline = "bottom";
 	ctx.textAlign = "right";
-	ctx.font = "bold 80px arial, sans-serif";
+	ctx.font = "bold 80px ubuntu, sans-serif";
 	ctx.fillStyle = "#323330";
 	ctx.fillText("JS", size-10, size);
 	

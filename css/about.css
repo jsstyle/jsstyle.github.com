@@ -5,8 +5,8 @@
 
 #about div {
 	text-align: center;
-	font-family: serif;
 	font-style: italic;
+	font-family: ubuntu serif, serif;
 	position: absolute;
 	width: 100%;
 	opacity: 0;
@@ -30,6 +30,14 @@
 	position: relative;
 	top: 0.3em;
 	margin: 0 0.1em;
+}
+
+#about q:before {
+	content: "“";
+}
+
+#about q:after {
+	content: "”";
 }
 
 #about span {
