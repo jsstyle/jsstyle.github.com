@@ -10,7 +10,6 @@ JSStyle.Option.prototype.getName = function() {
 }
 
 JSStyle.Option.prototype.getId = function() {
-	/* FIXME overit unikatnost */
 	return this._data.id;
 }
 

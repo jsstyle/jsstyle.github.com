@@ -11,7 +11,7 @@ JSStyle.prototype.build = function(parent) {
 		this._items[item.getId()] = item;
 
 		var id = item.getId();
-		if (id in ids) { throw new Error("Duplicate ID '" + id + "'"); }
+		if (id in ids) { throw new Error("Duplicate item ID '" + id + "'"); }
 		ids[id] = true;
 
 		item.build(parent);
@@ -91,7 +91,7 @@ JSStyle.prototype.toCanvas = function() {
 		var id = ids[i];
 		var coords = this._indexToCoords(i);
 
-		ctx.fillStyle = "red";
+		ctx.fillStyle = this._items[id].getColor();
 		ctx.fillRect(coords[0]*s, coords[1]*s, s, s);
 	}
 	
