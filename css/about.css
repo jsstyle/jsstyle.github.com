@@ -10,11 +10,11 @@
 	position: absolute;
 	width: 100%;
 	opacity: 0;
-	-webkit-transition: all 1s;
-	-moz-transition: all 1s;
-	-ms-transition: all 1s;
-	-o-transition: all 1s;
-	transition: all 1s;
+	-webkit-transition: all 1.5s;
+	-moz-transition: all 1.5s;
+	-ms-transition: all 1.5s;
+	-o-transition: all 1.5s;
+	transition: all 1.5s;
 }
 
 #about div.active {
