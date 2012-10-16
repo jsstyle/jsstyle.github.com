@@ -21,11 +21,8 @@ header h1 {
 	text-align: center;
 }
 
-footer {
-	clear: both;
-	text-align: center;
-	font-size: 80%;
-	padding-top: 2em;
+header h1 a {
+	text-decoration: none;
 }
 
 body > section {
@@ -34,4 +31,21 @@ body > section {
 
 section[id]:not(:target) {
 	display: none;
+}
+
+#decode button {
+	font-size: 200%;
+	cursor: pointer;
+}
+
+#decode textarea {
+	width: 40%;
+	height: 200px;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	font-size: 80%;
+	padding-top: 2em;
 }
