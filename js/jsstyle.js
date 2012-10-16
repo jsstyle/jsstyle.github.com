@@ -41,7 +41,7 @@ JSStyle.prototype.toHash = function() {
 	var result = [];
 	while (ids.length) {
 		var value = this._items[ids.shift()].getValue();
-		var code = "x";
+		var code = "-";
 		
 		if (value !== null) {
 			/* from 32 to 128 exclusive, e.g. 96 values */
@@ -85,6 +85,7 @@ JSStyle.prototype.toCanvas = function() {
 	
 	var count = 0;
 	var s = 20;
+	var padding = 1;
 	
 	var ids = this._sortIds();
 	for (var i=0;i<ids.length;i++) { 
@@ -92,7 +93,7 @@ JSStyle.prototype.toCanvas = function() {
 		var coords = this._indexToCoords(i);
 
 		ctx.fillStyle = this._items[id].getColor();
-		ctx.fillRect(coords[0]*s, coords[1]*s, s, s);
+		ctx.fillRect(coords[0]*s + padding, coords[1]*s + padding, s - 2*padding, s - 2*padding);
 	}
 	
 	return canvas;
@@ -165,7 +166,7 @@ JSStyle.prototype.fromHash = function(str) {
 		var ch = str.charAt(0);
 		var code = 0;
 		
-		if (ch == "x") { /* empty*/
+		if (ch == "-") { /* empty*/
 			str = str.substring(1);
 			item.setValue(null);
 		} else { /* number */
@@ -210,8 +211,12 @@ JSStyle.prototype.fromAA = function(str) {
 	
 }
 
+JSStyle.prototype._indexToDiagonal = function(index) {
+	return Math.floor((Math.sqrt(1+8*index)-1)/2);
+}
+
 JSStyle.prototype._indexToCoords = function(index) {
-	var line = Math.floor((Math.sqrt(1+8*index)-1)/2);
+	var line = this._indexToDiagonal(index);
 	var before = line * (line+1) / 2;
 	index -= before;
 	return [index, line-index];
