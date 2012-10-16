@@ -1,0 +1,41 @@
+#about {
+	position: relative;
+	height: 15em;
+}
+
+#about div {
+	text-align: center;
+	font-family: serif;
+	font-style: italic;
+	position: absolute;
+	width: 100%;
+	opacity: 0;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-ms-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+}
+
+#about div.active {
+	opacity: 1;
+}
+
+#about q {
+	display: block;
+}
+
+#about q:before, q:after {
+	font-size: 500%;
+	position: relative;
+	top: 0.3em;
+	margin: 0 0.1em;
+}
+
+#about span {
+	margin-left: 15em;
+}
+
+#about span:before {
+	content: "— ";
+}
