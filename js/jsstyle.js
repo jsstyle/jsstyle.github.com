@@ -37,8 +37,8 @@ JSStyle.prototype.toJSON = function() {
 }
 
 JSStyle.prototype.toHash = function() {
-	var ids = this._sortIds();
 	var result = [];
+	var ids = this._sortIds();
 	while (ids.length) {
 		var value = this._items[ids.shift()].getValue();
 		var code = "-";
@@ -57,6 +57,18 @@ JSStyle.prototype.toHash = function() {
 	}
 	
 	return result.join("");
+}
+
+JSStyle.prototype.toText = function() {
+	var result = [];
+	var ids = this._sortIds();
+	while (ids.length) {
+		var item = this._items[ids.shift()];
+		var value = item.getValueName();
+		if (value === null) { continue; }
+		result.push([item.getName(), value])
+	}
+	return result;
 }
 
 

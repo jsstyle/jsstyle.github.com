@@ -32,3 +32,19 @@
 	padding: 0.3em;
 	margin: 0;
 }
+
+#result div:last-child { 
+	clear: both;
+	width: 92%;
+}
+
+#result dl {
+	text-align: left;
+	-webkit-column-width: 400px;
+	-moz-column-width: 400px;
+	column-width: 400px;
+}
+
+#result dt {
+	margin-top: 0.5em;
+}
