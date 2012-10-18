@@ -33,6 +33,11 @@
 	margin: 0;
 }
 
+#result img {
+	display: block;
+	margin: 1em auto;
+}
+
 #result div:nth-of-type(5) { 
 	clear: both;
 	width: 92%;
