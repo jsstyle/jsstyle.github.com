@@ -124,6 +124,10 @@ var DATA = [
 		name: "Inheritance",
 		options: [
 			{
+				id: "-",
+				name: "What the F*$% is inheritance?"
+			},
+			{
 				id: "+",
 				name: "Native: <code>Child.prototype = Object.create(Parent.prototype)</code>"
 			},
