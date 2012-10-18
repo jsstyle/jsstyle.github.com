@@ -107,19 +107,21 @@ var Page = {
 		pre.innerHTML = JSON.stringify(json, null, "  ");
 		this._buildResultItem("JSON", "Pure JSONified essence", pre);
 
-		var aa = this._jsstyle.toAA();
-		this._buildResultItem("Signature", "Hardcore ASCII art awesomeness. Select all, copy, paste!", aa);
-
-		var canvas = this._jsstyle.toCanvas();
-		this._buildResultItem("Image", "Right-click to save", canvas);
-
 		var url = "?" + this._jsstyle.toHash();
 		var link = document.createElement("a");
 		link.href = url;
 		link.target = "_blank";
 		link.innerHTML = "Click here";
-		var aa = this._jsstyle.toAA();
+		var img = document.createElement("img");
+		img.src = "http://qr.kaywa.com/?s=7&d=" + encodeURIComponent(url);
+		link.appendChild(img);
 		this._buildResultItem("Permalink", "Link to this page", link);
+
+		var aa = this._jsstyle.toAA();
+		this._buildResultItem("Signature", "Hardcore ASCII art awesomeness. Select all, copy, paste!", aa);
+
+		var canvas = this._jsstyle.toCanvas();
+		this._buildResultItem("Image", "Right-click to save", canvas);
 
 		var node = document.createElement("dl");
 		var texts = this._jsstyle.toText();
