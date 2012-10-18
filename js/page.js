@@ -121,12 +121,27 @@ var Page = {
 		var aa = this._jsstyle.toAA();
 		this._buildResultItem("Permalink", "Link to this page", link);
 
+		var node = document.createElement("dl");
+		var texts = this._jsstyle.toText();
+		if (texts.length) {
+			while (texts.length) {
+				var text = texts.shift();
+				var name = document.createElement("dt");
+				name.innerHTML = text[0];
+				var value = document.createElement("dd");
+				value.innerHTML = text[1];
+
+				[name, value].forEach(node.appendChild, node);
+			}
+			this._buildResultItem("Description", "", node);
+		}
+
 		location.hash = "result";
 	},
 	
 	_buildResultItem: function(label, title, node) {
 		var box = document.createElement("div");
-		box.title = title;
+		if (title) { box.title = title; }
 		
 		var heading = document.createElement("h3");
 		heading.innerHTML = label;
