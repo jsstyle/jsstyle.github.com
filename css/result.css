@@ -33,7 +33,7 @@
 	margin: 0;
 }
 
-#result div:last-child { 
+#result div:nth-child(5) { 
 	clear: both;
 	width: 92%;
 }
