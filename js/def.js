@@ -147,7 +147,7 @@ var DATA = [
 			},
 			{
 				id: "c",
-				name: "CoffeeScript"
+				name: "(Iced)CoffeeScript"
 			},
 			{
 				id: "l",
