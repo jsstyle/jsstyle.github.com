@@ -29,22 +29,45 @@ var Page = {
 		
 		this._dom.create.appendChild(this._dom.createButton);
 		
+		window.addEventListener("hashchange", this);
+		this._syncNav();
+
 		this._load();
 		this._pickQuote();
+
 		setInterval(this._pickQuote, 5000);
 	},
 
 	handleEvent: function(e) {
-		switch (e.target) {
-			case this._dom.createButton:
-				this._create();
+		switch (e.type) {
+			case "hashchange":
+				this._syncNav();
 			break;
 
-			case this._dom.decodeButton:
-				this._decode();
+			case "click":
+				switch (e.target) {
+					case this._dom.createButton:
+						this._create();
+					break;
+
+					case this._dom.decodeButton:
+						this._decode();
+					break;
+				}
 			break;
 		}
-		
+	},
+
+	_syncNav: function() {
+		var h = location.hash;
+		var s1 = "nav a[href='" + h + "']";
+		var s2 = "nav a:not([href='" + h + "'])";
+
+		var current = document.querySelector(s1);
+		if (current) { current.className = "current"; }
+
+		var inactive = document.querySelectorAll(s2);
+		for (var i=0;i<inactive.length;i++) { inactive[i].className = ""; }
 	},
 
 	/*

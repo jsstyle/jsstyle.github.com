@@ -2,28 +2,36 @@ nav ul {
 	padding: 0;
 	margin: 0;
 	list-style-type: none;
-	border-top: 1px solid #222;
 }
 
 nav li {
 	float: left;
-	width: 33%;
+	width: 33.333%;
 	text-align: center;
 }
 
 nav li a {
 	display: block;
 	width: 100%;
-	line-height: 2.5em;
+	line-height: 2em;
+	font-size: 120%;
 	text-decoration: none;
+	color: #aaa;
+	background-color: #3c3c3c;
+	background-image: -webkit-linear-gradient(top, #3c3c3c, #222);
+	background-image: -moz-linear-gradient(top, #3c3c3c, #222);
+	background-image: -ms-linear-gradient(top, #3c3c3c, #222);
+	background-image: -o-linear-gradient(top, #3c3c3c, #222);
+	background-image: linear-gradient(top, #3c3c3c, #222);
 }
 
-nav li a {
-	border-left: 1px solid #222;
+nav li a:hover {
+	color: #fff;
 }
 
-nav li:first-child a {
-	border-left: none;
+nav li a.current {
+	color: #fff;
+	background: #222;
 }
 
 nav ul:after {
