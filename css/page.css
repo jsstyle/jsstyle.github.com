@@ -11,8 +11,8 @@ a {
 }
 
 header {
-	background-color: #333;
-	box-shadow: 0 2px 2px #000;
+	background-color: #3c3c3c;
+	box-shadow: 0 2px 3px #000;
 }
 
 header h1 {
@@ -48,5 +48,6 @@ footer {
 	text-align: center;
 	font-size: 90%;
 	padding-top: 2em;
+	padding-bottom: 0.5em;
 }
 
