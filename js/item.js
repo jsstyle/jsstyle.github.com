@@ -5,6 +5,7 @@ JSStyle.Item = function(data) {
 
 /* so far, a maximum of 6 options is used */
 JSStyle.Item.COLORS = ["red", "green", "blue", "cyan", "magenta", "yellow", "black", "white"];
+// JSStyle.Item.COLORS = ["#f04f4f", "#4ff04f", "#4f4ff0", "#4ff0f0", "#f04ff0", "#4f4f4f"];
 
 JSStyle.Item.prototype.getId = function() {
 	return this._data.id;
