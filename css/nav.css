@@ -1,25 +1,26 @@
 nav {
 	position: absolute;
+	width: 30%;
+	right: 35%;
 }
 
 nav ul {
 	padding: 0;
 	margin: 0;
+	margin-top: 3em;
 	list-style-type: none;
-}
-
-nav li {
-	float: left;
-	width: 33.333%;
 	text-align: center;
 }
 
 nav li a {
 	display: block;
-	width: 100%;
-	line-height: 2em;
-	font-size: 120%;
+	text-align: center;
+	margin: 1em auto;
+	font-size: 200%;
+	border-radius: 0.3em;
 	text-decoration: none;
+	padding: 0.5em 0 0.3em 0;
+
 	color: #aaa;
 	background-color: #3c3c3c;
 	background-image: -webkit-linear-gradient(top, #3c3c3c, #222);
@@ -29,17 +30,42 @@ nav li a {
 	background-image: linear-gradient(top, #3c3c3c, #222);
 }
 
+nav li a span {
+	display: block;
+	opacity: 0;
+	font-size: 50%;
+}
+
+nav li:last-child a {
+	font-size: 130%;
+	width: 80%;
+}
+
 nav li a:hover {
 	color: #fff;
 }
 
-nav li a.current {
-	color: #fff;
-	background: #222;
+nav li a:hover span {
+	opacity: 1;
 }
 
-nav ul:after {
-	clear: both;
-	display: block;
-	content: "";
+:target ~ header nav {
+	right: 0;
+	width: 8em;
 }
+
+:target ~ header ul {
+	margin-top: 0;
+}
+
+:target ~ header li a {
+	padding: 0.3em 0;
+	margin: 0.3em auto;
+	font-size: 90%;
+	width: 100%;
+}
+
+:target ~ header li a span {
+	display: none;
+}
+
