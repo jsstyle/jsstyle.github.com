@@ -1,4 +1,4 @@
-#result div {
+#badge div {
 	width: 20%;
 	margin: 1%;
 	padding: 1%;
@@ -9,22 +9,22 @@
 	border: 2px dashed #000;
 }
 
-#result h3 {
+#badge h3 {
 	margin-top: 0;
 }
 
-#result .jslogo {
+#badge .jslogo {
 	background-color: #f0db4f;
 	color: #323330;
 	text-shadow: none;
 }
 
-#result pre {
+#badge pre {
 	text-align: left;
 	padding-left: 25%;
 }
 
-#result textarea {
+#badge textarea {
 	resize: none;
 	border: none;
 	overflow: hidden;
@@ -33,23 +33,23 @@
 	margin: 0;
 }
 
-#result img {
+#badge img {
 	display: block;
 	margin: 1em auto;
 }
 
-#result div:nth-of-type(5) { 
+#badge div:nth-of-type(5) { 
 	clear: both;
 	width: 92%;
 }
 
-#result dl {
+#badge dl {
 	text-align: left;
 	-webkit-column-width: 400px;
 	-moz-column-width: 400px;
 	column-width: 400px;
 }
 
-#result dt {
+#badge dt {
 	margin-top: 0.5em;
 }
