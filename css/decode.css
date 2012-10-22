@@ -1,0 +1,9 @@
+#decode button {
+	font-size: 200%;
+	cursor: pointer;
+}
+
+#decode textarea {
+	width: 40%;
+	height: 200px;
+}
