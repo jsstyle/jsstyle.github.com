@@ -29,7 +29,7 @@ header h1 a {
 }
 
 body > section {
-	margin: 1em 0;
+	margin: 1em;
 	-moz-transition: all 0.5s;
 }
 
