@@ -6,3 +6,11 @@
 - dotazy pod sebou
 - oddelit badge od dekodovaneho textu
 - lepsi algoritmus kodovani hashu
+
+"screeny":
+  1. landing s velkyma buttonama (#)
+    2. create s nudli formulare  (#create)
+      3. vysledek s badgema      (#badge)  => permalink ?hash#badge
+    4. decode s formem           (#decode)
+      5. dekodovany text         (#text)   => permalink ?hash#text
+    6. about                     (#about)
