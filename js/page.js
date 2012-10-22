@@ -11,10 +11,12 @@ var Page = {
 		this._dom.create = document.querySelector("#create");
 		this._dom.decode = document.querySelector("#decode");
 		this._dom.badge = document.querySelector("#badge");
+		this._dom.text = document.querySelector("#text");
 		this._dom.decodeArea = document.querySelector("#decode textarea");
 		this._dom.createButton = document.querySelector("#create button");
 		this._dom.decodeButton = document.querySelector("#decode button");
 		this._dom.badgeHeading = document.querySelector("#badge h2");
+		this._dom.textHeading = document.querySelector("#text h2");
 		
 		this._dom.createButton.addEventListener("click", this);
 		this._dom.decodeButton.addEventListener("click", this);
@@ -47,7 +49,7 @@ var Page = {
 			case "click":
 				switch (e.target) {
 					case this._dom.createButton:
-						this._create();
+						this._createBadge();
 					break;
 
 					case this._dom.decodeButton:
@@ -80,7 +82,7 @@ var Page = {
 			var hash = location.search.substring(1);
 			this._jsstyle.fromHash(hash);
 			/* auto-create */
-			if (!location.hash || location.hash == "#badge") { this._create(); }
+			if (!location.hash || location.hash == "#badge") { this._createBadge(); }
 		} else if (!location.hash) {
 		}
 	},
@@ -96,7 +98,7 @@ var Page = {
 		var r = value.match(/^(http.*\?)?([\-0-9]+)(#.*)?$/);
 		if (r) {
 			this._jsstyle.fromHash(r[2]);
-			this._create();
+			this._createText();
 			return;
 		}
 		
@@ -104,7 +106,7 @@ var Page = {
 		var r = value.match(/^\+-+\+\n[\s\S]+\+-+\+$/);
 		if (r) {
 			this._jsstyle.fromAA(value);
-			this._create();
+			this._createText();
 			return;
 		}
 		
@@ -112,15 +114,14 @@ var Page = {
 		try {
 			var data = JSON.parse(value);
 			this._jsstyle.fromJSON(data);
-			this._create();
+			this._createText();
 			return;
 		} catch (e) {};
-
 
 		alert("Unable to decode pasted data :-(");
 	},
 	
-	_create: function() {
+	_createBadge: function() {
 		this._dom.badge.innerHTML = "";
 		this._dom.badge.appendChild(this._dom.badgeHeading);
 		
@@ -145,6 +146,13 @@ var Page = {
 		var canvas = this._jsstyle.toCanvas();
 		this._buildBadgeItem("Image", "Right-click to save", canvas);
 
+		location.hash = "badge";
+	},
+
+	_createText: function() {
+		this._dom.text.innerHTML = "";
+		this._dom.text.appendChild(this._dom.textHeading);
+		
 		var node = document.createElement("dl");
 		var texts = this._jsstyle.toText();
 		if (texts.length) {
@@ -157,12 +165,13 @@ var Page = {
 
 				[name, value].forEach(node.appendChild, node);
 			}
-			this._buildBadgeItem("Description", "", node);
 		}
 
-		location.hash = "badge";
+		this._dom.text.appendChild(node);
+
+		location.hash = "text";
 	},
-	
+
 	_buildBadgeItem: function(label, title, node) {
 		var box = document.createElement("div");
 		if (title) { box.title = title; }
