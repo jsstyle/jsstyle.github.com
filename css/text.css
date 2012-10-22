@@ -1,0 +1,11 @@
+#text {
+	text-align: center;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#text dl {
+	max-width: 500px;
+	margin: auto;
+	text-align: left;
+}
