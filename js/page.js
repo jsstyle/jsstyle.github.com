@@ -31,9 +31,6 @@ var Page = {
 		
 		this._dom.create.appendChild(this._dom.createButton);
 		
-		window.addEventListener("hashchange", this);
-		this._syncNav();
-
 		this._load();
 		this._pickQuote();
 
@@ -41,49 +38,40 @@ var Page = {
 	},
 
 	handleEvent: function(e) {
-		switch (e.type) {
-			case "hashchange":
-				this._syncNav();
+		switch (e.target) {
+			case this._dom.createButton:
+				this._createBadge();
+
+				/*  redirect */
+				var url = "?" + this._jsstyle.toHash() + "#badge";
+
+				if (history.pushState) {
+					history.pushState(null, null, url);
+					this._show("badge");
+				} else {
+					location.href = url;
+				}
 			break;
 
-			case "click":
-				switch (e.target) {
-					case this._dom.createButton:
-						this._createBadge();
-					break;
-
-					case this._dom.decodeButton:
-						this._decode();
-					break;
-				}
+			case this._dom.decodeButton:
+				this._decode();
 			break;
 		}
 	},
 
-	_syncNav: function() {
-		var h = location.hash;
-		var s1 = "nav a[href='" + h + "']";
-		var s2 = "nav a:not([href='" + h + "'])";
-
-		var current = document.querySelector(s1);
-		if (current) { current.className = "current"; }
-
-		var inactive = document.querySelectorAll(s2);
-		for (var i=0;i<inactive.length;i++) { inactive[i].className = ""; }
+	_show: function(what) {
+		location.hash = "#" + what;
 	},
 
-	/*
-	search \ hash | neni  | result | neco |
-	      ano     | draw  |  draw  |  -   |
-	      ne      | about |    -   |  -   |
-	*/
 	_load: function() {
 		if (location.search.length > 1) { /* pre-fill with data from url */
 			var hash = location.search.substring(1);
 			this._jsstyle.fromHash(hash);
+			this._createBadge();
+			this._createText();
+
 			/* auto-create */
-			if (!location.hash || location.hash == "#badge") { this._createBadge(); }
-		} else if (!location.hash) {
+			if (!location.hash) { this._show("text"); } /* FIXME badge/text? */
 		}
 	},
 	
@@ -99,6 +87,7 @@ var Page = {
 		if (r) {
 			this._jsstyle.fromHash(r[2]);
 			this._createText();
+			this._show("text");
 			return;
 		}
 		
@@ -107,6 +96,7 @@ var Page = {
 		if (r) {
 			this._jsstyle.fromAA(value);
 			this._createText();
+			this._show("text");
 			return;
 		}
 		
@@ -115,6 +105,7 @@ var Page = {
 			var data = JSON.parse(value);
 			this._jsstyle.fromJSON(data);
 			this._createText();
+			this._show("text");
 			return;
 		} catch (e) {};
 
@@ -124,29 +115,30 @@ var Page = {
 	_createBadge: function() {
 		this._dom.badge.innerHTML = "";
 		this._dom.badge.appendChild(this._dom.badgeHeading);
-		
+/*		
 		var json = this._jsstyle.toJSON();
 		var pre = document.createElement("pre");
 		pre.innerHTML = JSON.stringify(json, null, "  ");
 		this._buildBadgeItem("JSON", "Pure JSONified essence", pre);
-
-		var url = "?" + this._jsstyle.toHash();
-		var link = document.createElement("a");
-		link.href = url;
-		link.target = "_blank";
-		link.innerHTML = "Click here";
-		var img = document.createElement("img");
-		img.src = "http://qr.kaywa.com/?s=7&d=" + encodeURIComponent(url);
-		link.appendChild(img);
-		this._buildBadgeItem("Permalink", "Link to this page", link);
-
+*/
 		var aa = this._jsstyle.toAA();
-		this._buildBadgeItem("Signature", "Hardcore ASCII art awesomeness. Select all, copy, paste!", aa);
+		this._buildBadgeItem("Signature", "Hardcore ASCII art awesomeness.<br/>Select all, copy, paste!", aa);
 
 		var canvas = this._jsstyle.toCanvas();
 		this._buildBadgeItem("Image", "Right-click to save", canvas);
 
-		location.hash = "badge";
+		var url = "?" + this._jsstyle.toHash() + "#text";
+		var links = document.createElement("ul");
+		this._buildBadgeLink(links, url, "Your personal answers");
+		this._buildBadgeItem("Links", "Share the fame!", links);
+
+		if (window.gapi) {
+			var li = document.createElement("li");
+			links.appendChild(li);
+			var span = document.createElement("span");
+			li.appendChild(span);
+			gapi.plusone.render(span, {href:url, annotation:"bubble"});
+		}
 	},
 
 	_createText: function() {
@@ -168,18 +160,27 @@ var Page = {
 		}
 
 		this._dom.text.appendChild(node);
-
-		location.hash = "text";
 	},
 
-	_buildBadgeItem: function(label, title, node) {
+	_buildBadgeLink: function(parent, url, label) {
+		var li = document.createElement("li");
+		var a = document.createElement("a");
+		a.innerHTML = label;
+		a.href = url;
+		li.appendChild(a);
+		parent.appendChild(li);
+	},
+
+	_buildBadgeItem: function(label, desc, node) {
 		var box = document.createElement("div");
-		if (title) { box.title = title; }
 		
 		var heading = document.createElement("h3");
 		heading.innerHTML = label;
+
+		var description = document.createElement("p");
+		description.innerHTML = desc;
 		
-		[heading, node].forEach(box.appendChild, box);
+		[heading, description, node].forEach(box.appendChild, box);
 		this._dom.badge.appendChild(box);
 	},
 	
