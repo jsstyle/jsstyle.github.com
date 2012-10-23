@@ -18,7 +18,7 @@
 		<link href="css/about.css" rel="stylesheet" type="text/css" />
 		<link href="css/text.css" rel="stylesheet" type="text/css" />
 	</head>
-	<body onload="Page.init()">
+	<body onload="Page.init()" itemscope itemtype="http://schema.org/Article">
 		<section id="create">
 			<h2>Create your own JavaScript Style Badge</h2>
 			<button>Create the badge!</button>
@@ -63,7 +63,7 @@
 		</section>
 
 		<header>
-			<h1><a href="#">JavaScript Style Badge :: Your JS Signature</a></h1>
+			<h1><a itemprop="name" href="#">JavaScript Style Badge :: Your JS Signature</a></h1>
 			<nav>
 				<ul>
 					<li><a href="#create">Create <span>Your own badge</span></a></li>
