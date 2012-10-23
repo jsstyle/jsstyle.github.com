@@ -15,8 +15,6 @@ header {
 	left: 0px;
 	top: 0px;
 	width: 100%;
-	background-color: #3c3c3c;
-	box-shadow: 0 2px 3px #000;
 }
 
 header *, footer {
@@ -28,11 +26,16 @@ header *, footer {
 }
 
 header h1 {
-	margin: 0.5em;
+	margin: 0;
 }
 
 header h1 a {
+	padding: 0.5em;
+	display: block;
+	width: 100%;
 	text-decoration: none;
+	background-color: #3c3c3c;
+	box-shadow: 0 2px 3px #000;
 }
 
 body > section {
