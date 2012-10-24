@@ -132,13 +132,30 @@ var Page = {
 		this._buildBadgeLink(links, url, "Your personal answers");
 		this._buildBadgeItem("Links", "Share the fame!", links);
 
-		if (window.gapi) {
+		if (window.gapi) { /* G+ */
 			var li = document.createElement("li");
 			links.appendChild(li);
 			var span = document.createElement("span");
 			li.appendChild(span);
 			gapi.plusone.render(span, {href:url, annotation:"bubble"});
 		}
+
+		/* twitter */
+		var li = document.createElement("li");
+		var a = document.createElement("a");
+		a.href = url; /* trick: use .href to canonicalize */
+		a.setAttribute("data-url", a.href); 
+		a.href = "https://twitter.com/intent/tweet?button_hashtag=jsstyle&text=My%20JavaScript%20Style%20Badge";
+		a.className = "twitter-hashtag-button";
+		a.setAttribute("data-size", "large");
+		a.setAttribute("data-related", "0ndras");
+		a.innerHTML = "Tweet #jsstyle";
+		li.appendChild(a);
+		links.appendChild(li);
+
+		var script = document.createElement("script");
+		script.src = "//platform.twitter.com/widgets.js";
+		document.body.appendChild(script);
 	},
 
 	_createText: function() {
