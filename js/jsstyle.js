@@ -117,7 +117,7 @@ JSStyle.prototype.toAA = function() {
 
 	var node = document.createElement("textarea");
 	node.cols = width;
-	node.rows = height;
+	node.rows = height + 1;
 	node.readOnly = true;
 	node.className = "jslogo";
 
@@ -155,7 +155,7 @@ JSStyle.prototype.toAA = function() {
 		}
 		str += "\n";
 	}
-	node.innerHTML = str;
+	node.innerHTML = str + " jsstyle.github.com ";
 	
 	return node;
 }

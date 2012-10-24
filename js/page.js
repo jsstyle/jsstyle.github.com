@@ -92,9 +92,9 @@ var Page = {
 		}
 		
 		/* is it a signature? */
-		var r = value.match(/^\+-+\+\n[\s\S]+\+-+\+$/);
+		var r = value.match(/^\s*(-- \n)?\s*(\+-+\+\n[\s\S]+\+-+\+)/);
 		if (r) {
-			this._jsstyle.fromAA(value);
+			this._jsstyle.fromAA(r[2]);
 			this._createText();
 			this._show("text");
 			return;
@@ -122,12 +122,17 @@ var Page = {
 		this._buildBadgeItem("JSON", "Pure JSONified essence", pre);
 */
 		var aa = this._jsstyle.toAA();
+		aa.addEventListener("click", function(e) { e.target.select && e.target.select(); });
 		this._buildBadgeItem("Signature", "Hardcore ASCII art awesomeness.<br/>Select all, copy, paste!", aa);
 
 		var canvas = this._jsstyle.toCanvas();
 		this._buildBadgeItem("Image", "Right-click to save", canvas);
 
 		var url = "?" + this._jsstyle.toHash() + "#text";
+		var a = document.createElement("a");
+		a.href = url;  /* trick: use .href to canonicalize */
+		url = a.href;
+
 		var links = document.createElement("ul");
 		this._buildBadgeLink(links, url, "Your personal answers");
 		this._buildBadgeItem("Links", "Share the fame!", links);
@@ -143,19 +148,28 @@ var Page = {
 		/* twitter */
 		var li = document.createElement("li");
 		var a = document.createElement("a");
-		a.href = url; /* trick: use .href to canonicalize */
-		a.setAttribute("data-url", a.href); 
 		a.href = "https://twitter.com/intent/tweet?button_hashtag=jsstyle&text=My%20JavaScript%20Style%20Badge";
 		a.className = "twitter-hashtag-button";
 		a.setAttribute("data-size", "large");
+		a.setAttribute("data-url", url); 
 		a.setAttribute("data-related", "0ndras");
 		a.innerHTML = "Tweet #jsstyle";
 		li.appendChild(a);
 		links.appendChild(li);
-
 		var script = document.createElement("script");
 		script.src = "//platform.twitter.com/widgets.js";
 		document.body.appendChild(script);
+
+		if (window.IN) { /* linkedin */
+			var li = document.createElement("li");
+			var s = document.createElement("script");
+			s.type = "IN/Share";
+			s.setAttribute("data-url", url);
+			s.setAttribute("data-counter", "right");
+			li.appendChild(s);
+			links.appendChild(li);
+			IN.parse();
+		}
 	},
 
 	_createText: function() {
