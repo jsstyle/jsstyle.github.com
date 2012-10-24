@@ -39,10 +39,10 @@
 	content: "”";
 }
 
-#about span {
+#about div span {
 	margin-left: 15em;
 }
 
-#about span:before {
+#about div span:before {
 	content: "— ";
 }
