@@ -84,6 +84,10 @@ var DATA = [
 			{
 				id: "?",
 				name: "Using an abstraction: <code>extend(Child, Parent)</code> or similar"
+			},
+			{
+				id: "o",
+				name: "No <code>new</code> operator, just <code>newObj = Object.create(parentObj)</code>"
 			}
 		]
 	},
