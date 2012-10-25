@@ -47,9 +47,6 @@ JSStyle.prototype.toHash = function() {
 			/* from 32 to 128 exclusive, e.g. 96 values */
 			var code = value.charCodeAt(0); /* 33-116 */
 
-			/* letters + numbers - 10 + 2*26 = 62 */
-
-			
 			code -= 32;
 			code = code.toString();
 			while (code.length < 2) { code = "0" + code; } /* poor man's lpad */
@@ -119,7 +116,7 @@ JSStyle.prototype.toAA = function() {
 	var height = 11;
 
 	var node = document.createElement("textarea");
-	node.cols = width;
+	node.cols = width + 1;
 	node.rows = height + 1;
 	node.readOnly = true;
 	node.className = "jslogo";
