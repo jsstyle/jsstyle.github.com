@@ -45,7 +45,10 @@ JSStyle.prototype.toHash = function() {
 		
 		if (value !== null) {
 			/* from 32 to 128 exclusive, e.g. 96 values */
-			var code = value.charCodeAt(0);
+			var code = value.charCodeAt(0); /* 33-116 */
+
+			/* letters + numbers - 10 + 2*26 = 62 */
+
 			
 			code -= 32;
 			code = code.toString();

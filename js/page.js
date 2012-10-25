@@ -44,13 +44,7 @@ var Page = {
 
 				/*  redirect */
 				var url = "?" + this._jsstyle.toHash() + "#badge";
-
-				if (history.pushState) {
-					history.pushState(null, null, url);
-					this._show("badge");
-				} else {
-					location.href = url;
-				}
+				location.href = url;
 			break;
 
 			case this._dom.decodeButton:

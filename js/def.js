@@ -49,7 +49,7 @@ var DATA = [
 		options: [
 			{
 				id: ".",
-				name: "<code>for..in</code>"
+				name: "<code>for..in</code> (<code>of</code> in CoffeeScript)"
 			},
 			{
 				id: "o",
@@ -75,7 +75,7 @@ var DATA = [
 			},
 			{
 				id: "1",
-				name: "Indexed (<code>for i=0</code> or <code>while</code>)"
+				name: "Indexed (<code>for i=0</code> or <code>while</code> or <code>in</code> in CoffeeScript)"
 			},
 			{
 				id: "f",
