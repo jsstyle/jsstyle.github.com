@@ -1,27 +1,89 @@
 var DATA = [
 	{
-		id: " ",
-		name: "Whitespace",
+		id: "W",
+		name: "Where",
 		options: [
 			{
-				id: "s",
-				name: "Spaces FTW"
+				id: "c",
+				name: "Client"
 			},
 			{
-				id: "t",
-				name: "Tabs, please"
+				id: "s",
+				name: "Server"
 			},
 			{
 				id: "b",
-				name: "Both, mix as necessary"
+				name: "Both"
+			}
+		]
+	},
+	{
+		id: ">",
+		name: "Preprocessing",
+		options: [
+			{
+				id: "j",
+				name: "Pure JS"
 			},
 			{
-				id: "B",
-				name: "Tabs for indentation, spaces for alignment"
+				id: "c",
+				name: "CoffeeScript"
+			},
+			{
+				id: "C",
+				name: "CoffeeScript derivative (Iced, LiveScript, &hellip;)"
+			},
+			{
+				id: "l",
+				name: "ClojureScript"
+			},
+			{
+				id: "d",
+				name: "Dart"
+			},
+			{
+				id: "t",
+				name: "TypeScript"
 			},
 			{
 				id: "?",
-				name: "I don't give a damn"
+				name: "Other"
+			}
+		]
+	},
+	{
+		id: "()",
+		name: "Methods defined",
+		options: [
+			{
+				id: "p",
+				name: "In prototype: <code>Stuff.prototype.work = ...</code>"
+			},
+			{
+				id: "i",
+				name: "In instance: <code>this.work = ...</code>"
+			},
+			{
+				id: "?",
+				name: "Using an abstraction: <code>defineMethod({work: ...})</code> or similar"
+			}
+		]
+	},
+	{
+		id: "^",
+		name: "Inheritance",
+		options: [
+			{
+				id: "-",
+				name: "What the F*$% is inheritance?"
+			},
+			{
+				id: "+",
+				name: "Native: <code>Child.prototype = Object.create(Parent.prototype)</code>"
+			},
+			{
+				id: "?",
+				name: "Using an abstraction: <code>extend(Child, Parent)</code> or similar"
 			}
 		]
 	},
@@ -34,12 +96,38 @@ var DATA = [
 				name: "That is inherently evil"
 			},
 			{
+				id: "=",
+				name: "Only as polyfills / shims"
+			},
+			{
 				id: "+",
 				name: "Kicks ass, but not on <code>Object</code>"
 			},
 			{
 				id: "!",
 				name: "Kicks ass, including <code>Object</code>"
+			}
+		]
+	},
+	{
+		id: "_",
+		name: "Private names",
+		options: [
+			{
+				id: "-",
+				name: "Not used at all"
+			},
+			{
+				id: "1",
+				name: "Underscore(s) at the beginning"
+			},
+			{
+				id: "n",
+				name: "Underscore(s) at the end"
+			},
+			{
+				id: "?",
+				name: "Other"
 			}
 		]
 	},
@@ -98,76 +186,6 @@ var DATA = [
 			{
 				id: "=",
 				name: "Sometimes"
-			}
-		]
-	},
-	{
-		id: "()",
-		name: "Methods defined",
-		options: [
-			{
-				id: "p",
-				name: "In prototype: <code>Stuff.prototype.work = ...</code>"
-			},
-			{
-				id: "i",
-				name: "In instance: <code>this.work = ...</code>"
-			},
-			{
-				id: "?",
-				name: "Using an abstraction: <code>defineMethod({work: ...})</code> or similar"
-			}
-		]
-	},
-	{
-		id: "^",
-		name: "Inheritance",
-		options: [
-			{
-				id: "-",
-				name: "What the F*$% is inheritance?"
-			},
-			{
-				id: "+",
-				name: "Native: <code>Child.prototype = Object.create(Parent.prototype)</code>"
-			},
-			{
-				id: "?",
-				name: "Using an abstraction: <code>extend(Child, Parent)</code> or similar"
-			}
-		]
-	},
-	{
-		id: ">",
-		name: "Preprocessing",
-		options: [
-			{
-				id: "j",
-				name: "Pure JS"
-			},
-			{
-				id: "c",
-				name: "CoffeeScript"
-			},
-			{
-				id: "C",
-				name: "CoffeeScript derivative (Iced, LiveScript, &hellip;)"
-			},
-			{
-				id: "l",
-				name: "ClojureScript"
-			},
-			{
-				id: "d",
-				name: "Dart"
-			},
-			{
-				id: "t",
-				name: "TypeScript"
-			},
-			{
-				id: "?",
-				name: "Other"
 			}
 		]
 	},
@@ -240,31 +258,14 @@ var DATA = [
 			{
 				id: "=",
 				name: "For certain (long/hot) loops"
-			}
-		]
-	},
-	{
-		id: "_",
-		name: "Private names",
-		options: [
-			{
-				id: "-",
-				name: "Not used at all"
-			},
-			{
-				id: "1",
-				name: "Underscore(s) at the beginning"
-			},
-			{
-				id: "n",
-				name: "Underscore(s) at the end"
 			},
 			{
 				id: "?",
-				name: "Other"
+				name: "Preprocessor handles this for me"
 			}
 		]
 	},
+
 	{
 		id: "v",
 		name: "Variable declaration",
@@ -284,20 +285,28 @@ var DATA = [
 		]
 	},
 	{
-		id: "W",
-		name: "Where",
+		id: " ",
+		name: "Whitespace",
 		options: [
 			{
-				id: "c",
-				name: "Client"
+				id: "s",
+				name: "Spaces FTW"
 			},
 			{
-				id: "s",
-				name: "Server"
+				id: "t",
+				name: "Tabs, please"
 			},
 			{
 				id: "b",
-				name: "Both"
+				name: "Both, mix as necessary"
+			},
+			{
+				id: "B",
+				name: "Tabs for indentation, spaces for alignment"
+			},
+			{
+				id: "?",
+				name: "I don't give a damn"
 			}
 		]
 	}
