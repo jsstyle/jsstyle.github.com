@@ -40,11 +40,25 @@ var Page = {
 	handleEvent: function(e) {
 		switch (e.target) {
 			case this._dom.createButton:
+				this._createText();
 				this._createBadge();
 
-				/*  redirect */
+				/* beacon */
+				var url = "http://ondras.zarovi.cz/jsstyle-stats/?json=";
+				url += encodeURIComponent(JSON.stringify(this._jsstyle.toJSON()));
+				var xhr = new (window.XDomainRequest || window.XMLHttpRequest)();
+				xhr.open("get", url, true);
+				xhr.send(null);
+
 				var url = "?" + this._jsstyle.toHash() + "#badge";
-				location.href = url;
+				if (history.pushState) {
+					history.pushState({}, null, url);
+					this._show(""); /* chrome bug */
+					this._show("badge"); /* chrome bug */
+				} else { /* wait a bit for the request */
+					setTimeout(function() { location.href = url; }, 500);
+				}
+
 			break;
 
 			case this._dom.decodeButton:
@@ -162,7 +176,7 @@ var Page = {
 			s.setAttribute("data-counter", "right");
 			li.appendChild(s);
 			links.appendChild(li);
-			IN.parse();
+			try { IN.parse(); } catch (e) {};
 		}
 	},
 

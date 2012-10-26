@@ -43,7 +43,6 @@
 	font-size: 90%;
 }
 
-
 #create .item:hover:nth-of-type(5):before {
 	content: "You are doing good...";
 }
