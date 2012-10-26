@@ -32,7 +32,6 @@ header h1 {
 header h1 a {
 	padding: 0.5em;
 	display: block;
-	width: 100%;
 	text-decoration: none;
 	background-color: #3c3c3c;
 	box-shadow: 0 2px 3px #000;
