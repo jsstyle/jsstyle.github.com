@@ -9,6 +9,7 @@
 	counter-increment: item;
 	padding: 0.5em 0;
 	text-align: left;
+	position: relative;
 }
 
 #create .item:hover {
@@ -33,6 +34,26 @@
 
 #create h3:before {
 	content: counter(item) " ";
+}
+
+#create .item:before {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	font-size: 90%;
+}
+
+
+#create .item:hover:nth-of-type(5):before {
+	content: "You are doing good...";
+}
+
+#create .item:hover:nth-last-of-type(7):before {
+	content: "Just a few more...";
+}
+
+#create .item:hover:nth-last-of-type(3):before {
+	content: "Almost done...";
 }
 
 #create ul {
