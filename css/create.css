@@ -85,3 +85,9 @@
 #create li input:checked ~ span {
 	opacity: 1;
 }
+
+#create li .stats {
+	position: absolute;
+	right: 108%;
+	top: 0px;
+}

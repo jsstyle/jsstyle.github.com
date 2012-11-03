@@ -28,6 +28,18 @@ var Page = {
 			alert(e.message);
 			return;
 		}
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("get", "http://ondras.zarovi.cz/jsstyle-stats/stats.json", true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState != 4 || xhr.status != 200) { return; }
+			try {
+				var stats = JSON.parse(xhr.responseText);
+				this._jsstyle.setStats(stats);
+			} catch (e) {}
+		}.bind(this);
+		xhr.send(null);
+
 		
 		this._dom.create.appendChild(this._dom.createButton);
 		

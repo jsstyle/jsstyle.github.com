@@ -7,6 +7,17 @@ JSStyle.Item = function(data) {
 JSStyle.Item.COLORS = ["red", "green", "blue", "cyan", "magenta", "yellow", "white", "black"];
 // JSStyle.Item.COLORS = ["#f04f4f", "#4ff04f", "#4f4ff0", "#4ff0f0", "#f04ff0", "#4f4f4f"];
 
+JSStyle.Item.prototype.setStats = function(stats) {
+	var total = 0;
+	for (var id in stats) { total += stats[id]; }
+	for (var i = 0; i<this._options.length;i++) {
+		var opt = this._options[i];
+		var id = opt.getId();
+		var value = (stats[id] || 0) / total;
+		opt.setStats(value);
+	}
+}
+
 JSStyle.Item.prototype.getId = function() {
 	return this._data.id;
 }
