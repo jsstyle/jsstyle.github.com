@@ -1,7 +1,8 @@
 JSStyle.Option = function(data) {
 	this._data = data;
 	this._dom = {
-		radio: null
+		radio: null,
+		li: null
 	}
 }
 
@@ -11,6 +12,13 @@ JSStyle.Option.prototype.getName = function() {
 
 JSStyle.Option.prototype.getId = function() {
 	return this._data.id;
+}
+
+JSStyle.Option.prototype.setStats = function(fraction) {
+	var span = document.createElement("span");
+	span.className = "stats";
+	span.innerHTML = Math.round(fraction*100) + "%";
+	this._dom.li.appendChild(span);
 }
 
 JSStyle.Option.prototype.build = function(parent, name) {
@@ -27,6 +35,7 @@ JSStyle.Option.prototype.build = function(parent, name) {
 	parent.appendChild(li);
 	
 	this._dom.radio = radio;
+	this._dom.li = li;
 	return this;
 }
 

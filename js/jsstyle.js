@@ -18,6 +18,14 @@ JSStyle.prototype.build = function(parent) {
 	}
 }
 
+JSStyle.prototype.setStats = function(stats) {
+	for (var id in this._items) {
+		var s = stats[id];
+		if (!s) { continue; }
+		this._items[id].setStats(s);
+	}
+}
+
 JSStyle.prototype.toDebug = function() {
 	var result = {};
 	for (var id in this._items) {
