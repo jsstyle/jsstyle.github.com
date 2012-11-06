@@ -146,7 +146,7 @@ var Page = {
 		this._buildBadgeItem("Signature", "Hardcore ASCII art awesomeness.<br/>Select all, copy, paste!", aa);
 
 		var canvas = this._jsstyle.toCanvas();
-		this._buildBadgeItem("Image", "Right-click to save", canvas);
+		this._buildBadgeItem("Image", "Right-click to save<br/>(<a href='code.google.com/p/chromium/issues/detail?id=69357'>issue 69357</a> in Chrome)", canvas);
 
 		var url = "?" + this._jsstyle.toHash() + "#text";
 		var a = document.createElement("a");
