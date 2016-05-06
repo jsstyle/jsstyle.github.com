@@ -30,7 +30,7 @@ var Page = {
 		}
 
 		var xhr = new XMLHttpRequest();
-		xhr.open("get", "http://ondras.zarovi.cz/jsstyle-stats/stats.json", true);
+		xhr.open("get", "stats.json", true);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState != 4 || xhr.status != 200) { return; }
 			try {
@@ -55,12 +55,14 @@ var Page = {
 				this._createText();
 				this._createBadge();
 
-				/* beacon */
+				/* beacon - no longer active */
+				/*
 				var url = "http://ondras.zarovi.cz/jsstyle-stats/?json=";
 				url += encodeURIComponent(JSON.stringify(this._jsstyle.toJSON()));
 				var xhr = new (window.XDomainRequest || window.XMLHttpRequest)();
 				xhr.open("get", url, true);
 				xhr.send(null);
+				*/
 
 				var url = "?" + this._jsstyle.toHash() + "#badge";
 				if (history.pushState) {
